@@ -6,7 +6,7 @@ epicsQt
 Based on it there is a set of PyQt widgets which has epics awareness.
 They are here to integrate epics into existing PyQt applications.
 
-+==============+================+
++--------------+----------------+
 | Widget type  |  Description   |
 +==============+================+
 | eButton      | Push button    |
