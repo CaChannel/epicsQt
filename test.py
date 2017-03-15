@@ -70,6 +70,10 @@ if __name__=='__main__':
     btngrp = eButtonGroup(win, 'cabo', h=False)
     layout.addWidget(btngrp)
 
+    btn = eButton(win, 'cabo', (0, 1))
+    btn.setText('message button')
+    layout.addWidget(btn)
+
 
     win.show()
 

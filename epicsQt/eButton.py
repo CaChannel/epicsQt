@@ -4,13 +4,15 @@ from . import css
 
 
 class eButton(Qt.QPushButton):
-    def __init__(self, parent=None, pvName=None):
+    def __init__(self, parent=None, pvName=None, message=(None, None)):
         Qt.QPushButton.__init__(self, parent)
         self.setEnabled(False)
         self.setStyleSheet(css.disabled)
+        self._offMessage, self._onMessage = message
         if pvName is not None:
             self.setPV(pvName)
-        self.connect(self, Qt.SIGNAL('clicked()'), self.buttonClicked)
+        self.connect(self, Qt.SIGNAL('pressed()'), self.buttonPressed)
+        self.connect(self, Qt.SIGNAL('released()'), self.buttonReleased)
 
     def setPV(self, pv):
         if isinstance(pv, str):
@@ -28,10 +30,29 @@ class eButton(Qt.QPushButton):
     def setPvName(self, name):
         self.setPV(str(name))
 
-    pvName = Qt.pyqtProperty("QString", getPvName, setPvName)
+    def getOnMessage(self):
+        return self._onMessage
 
-    def buttonClicked(self):
-        self.pv.array_put(1)
+    def setOnMessage(self, on):
+        self._onMessage = on
+
+    def getOffMessage(self):
+        return self._offMessage
+
+    def setOffMessage(self, off):
+        self._offMessage = off
+
+    pvName = Qt.pyqtProperty("QString", getPvName, setPvName)
+    onMessage = Qt.pyqtProperty("QString", getOnMessage, setOnMessage)
+    offMessage = Qt.pyqtProperty("QString", getOffMessage, setOffMessage)
+
+    def buttonPressed(self):
+        if self._onMessage is not None:
+            self.pv.array_put(self._onMessage)
+
+    def buttonReleased(self):
+        if self._offMessage is not None:
+            self.pv.array_put(self._offMessage)
 
     def connectionChanged(self, connected):
         if connected:
