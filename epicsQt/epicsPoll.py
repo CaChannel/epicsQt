@@ -1,4 +1,4 @@
-import ca
+from CaChannel import ca
 import PyQt4.Qt as Qt
 
 

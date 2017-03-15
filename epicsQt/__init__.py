@@ -10,5 +10,4 @@ from .eIntSpin import eIntSpin
 from .eLCD import eLCD
 from .eLabel import eLabel
 from .eTextEdit import eTextEdit
-from .eTime import eTime
 
