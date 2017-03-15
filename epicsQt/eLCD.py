@@ -7,6 +7,7 @@ class eLCD(Qt.QLCDNumber):
         Qt.QLCDNumber.__init__(self, parent)
         self.setFrameStyle(Qt.QFrame.StyledPanel|Qt.QFrame.Raised)
         self.setSegmentStyle(Qt.QLCDNumber.Flat)
+        self.setMode(Qt.QLCDNumber.Dec)
         self.setEnabled(False)
         self.setStyleSheet(css.disabled)
         if pvName!=None:
@@ -42,10 +43,11 @@ class eLCD(Qt.QLCDNumber):
            self.pv.field_type()==epicsQt.CaChannel.ca.DBF_FLOAT:
             if hasattr(self.pv, 'pv_precision'): format='%%.%df'%self.pv.pv_precision
             else: format='%f'
-            self.display(format%self.pv.pv_value)
+            sval = format%self.pv.pv_value
         else:
-            self.display(str(self.pv.pv_value))
-
+            sval = str(self.pv.pv_value)
+        self.setDigitCount(len(sval))
+        self.display(sval)
         # re-emit it for upper level applications
         self.emit(Qt.SIGNAL('valueChanged()'))
 
