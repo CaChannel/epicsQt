@@ -1,0 +1,5 @@
+include MANIFEST.in
+include README.rst
+include setup.py
+include epicsQt/*.py
+include epicsQt/plugin/*.py
