@@ -9,7 +9,7 @@ They are here to integrate epics into existing PyQt applications.
 +--------------+----------------+
 | Widget type  |  Description   |
 +==============+================+
-| eButton      | Push button    |
+| eButton      | Message button |
 +--------------+----------------+
 | eButtonGroup | Choice button  |
 +--------------+----------------+
