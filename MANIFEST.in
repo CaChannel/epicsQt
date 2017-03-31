@@ -3,3 +3,4 @@ include README.rst
 include setup.py
 include epicsQt/*.py
 include epicsQt/plugin/*.py
+include python-epicsQt.spec
