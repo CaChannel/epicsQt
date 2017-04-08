@@ -29,5 +29,6 @@ They are here to integrate epics into existing PyQt applications.
 +--------------+----------------+
 
 Their designer plugins can be used, if PyQt installed,
+
     $ export PYQTDESIGNERPATH=<epicsQt>/plugin/
 
