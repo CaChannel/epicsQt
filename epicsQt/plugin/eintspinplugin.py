@@ -116,7 +116,7 @@ class eIntSpinTaskMenu(QtDesigner.QPyDesignerTaskMenuExtension):
 
     @QtCore.pyqtSignature("setPV()")
     def setPV(self):
-        pv,ok=QtGui.QInputDialog.getText(None,'Assign PV name','PV Name:')
+        pv,ok=QtGui.QInputDialog.getText(None,'Assign PV name','PV Name:',QtGui.QLineEdit.Normal,self.eWidget.getPvName())
         if ok:
             formWindow = QtDesigner.QDesignerFormWindowInterface.findFormWindow(self.eWidget)
             if formWindow:
